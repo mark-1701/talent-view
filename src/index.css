@@ -25,3 +25,23 @@
 .input {
   @apply w-full h-8 p-2 rounded border-2 border-gray-200 hover:border-blue-500 focus:border-blue-600 !outline-none;
 }
+
+.material-symbols-outlined {
+  font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+}
+
+@media (max-width: 639px) {
+  html {
+    font-size: 14px;
+  }
+}
+
+@media (min-width: 640px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}

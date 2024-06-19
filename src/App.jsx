@@ -4,6 +4,7 @@ import { HumanResourcesPermissions } from './utils/AccessPermissions';
 import ProtectedRoute from './routes/ProtectedRoute'
 import Login from './pages/Login/Login';
 import Employees from './pages/HumanResources/pages/Employees/Employees';
+import HumanResourcesRoute from './routes/HumanResourcesRoute'
 
 function App() {
   const [sessionUser, setSessionUser] = useState(undefined);
@@ -21,7 +22,7 @@ function App() {
         <Route path="/login" element={<Login setSessionUser={setSessionUser} />} />
       <Route path='/human-resources' element={<ProtectedRoute isAllowed={HumanResourcesPermissions(sessionUser)} />}>
       <Route path="" element={<Navigate to="employees" />} />
-        <Route path="employees" element={<Employees />} />
+        <Route path="employees" element={<HumanResourcesRoute selectedLink={'empleados'} module={<Employees />} />} />
       </Route>
       </Routes>
     </BrowserRouter>
