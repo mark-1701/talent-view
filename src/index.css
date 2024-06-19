@@ -1,0 +1,27 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.title {
+  @apply mb-4 text-lg font-bold text-gray-700 sm:text-2xl;
+}
+
+.link {
+  @apply no-underline text-black;
+}
+
+.btn {
+  @apply p-1 px-4 rounded shadow bg-blue-500 text-white hover:bg-blue-400;
+}
+
+.label {
+  @apply mb-4 block;
+}
+
+.select {
+  @apply w-full h-8 p-1 rounded border-2 bg-white;
+}
+
+.input {
+  @apply w-full h-8 p-2 rounded border-2 border-gray-200 hover:border-blue-500 focus:border-blue-600 !outline-none;
+}
