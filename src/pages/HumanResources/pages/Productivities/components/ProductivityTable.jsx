@@ -3,14 +3,14 @@ import DeleteIcon from '../../../../../components/common/DeleteIcon';
 import ViewIcon from '../../../../../components/common/ViewIcon';
 import { deleteData } from '../../../../../data/api';
 
-const EmployeeTable = ({
+const ProductivityTable = ({
   data,
   setSelectedElement,
   toggleViewModalState,
   toggleUpdateModalState
 }) => {
-  const deleteemployee = async id => {
-    const response = await deleteData('employee', id);
+  const deleteProductivity = async id => {
+    const response = await deleteData('productivity', id);
     window.location.reload();
   };
   return (
@@ -18,28 +18,26 @@ const EmployeeTable = ({
       <thead>
         <tr>
           <th>id</th>
-          <th>Nombres</th>
-          <th>Apellidos</th>
-          <th>Email</th>
-          <th>Puesto</th>
+          <th>Empleado</th>
+          <th>Fecha</th>
+          <th>Horas trabajadas</th>
+          <th>Puntaje de productividad</th>
           <th>Actions</th>
         </tr>
       </thead>
       <tbody>
-        {data.map(employee => (
-          <tr key={employee?.id}>
-            <td>{employee?.id}</td>
-            <td>{employee?.first_name}</td>
-            <td>{employee?.last_name}</td>
-            <td>{employee?.email}</td>
-            <td>{employee?.position?.name}</td>
-            {/* 
-        <td>{employee?.state}</td> */}
+        {data.map(productivity => (
+          <tr key={productivity?.id}>
+            <td>{productivity?.id}</td>
+            <td>{productivity?.employee?.first_name}</td>
+            <td>{productivity?.date}</td>
+            <td>{productivity?.hours_worked}</td>
+            <td>{productivity?.productivity_score}</td>
             <td className="flex justify-center items-center gap-2">
               <button
                 className=""
                 onClick={e => {
-                  setSelectedElement(employee);
+                  setSelectedElement(productivity);
                   toggleViewModalState();
                 }}
               >
@@ -48,7 +46,7 @@ const EmployeeTable = ({
               <button
                 className=""
                 onClick={e => {
-                  setSelectedElement(employee);
+                  setSelectedElement(productivity);
                   toggleUpdateModalState();
                 }}
               >
@@ -59,7 +57,7 @@ const EmployeeTable = ({
                 onSubmit={e => {
                   e.preventDefault();
                   if (confirm('¿Estas seguro de eliminar este registro?')) {
-                    deleteemployee(employee.id);
+                    deleteProductivity(productivity.id);
                   }
                 }}
               >
@@ -75,4 +73,4 @@ const EmployeeTable = ({
   );
 };
 
-export default EmployeeTable;
+export default ProductivityTable;

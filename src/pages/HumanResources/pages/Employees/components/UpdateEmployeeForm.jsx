@@ -24,7 +24,7 @@ const UpdateEmployeeForm = ({ positions, selectedElement }) => {
     >
       <div>
         <label htmlFor="id" className="label">
-          Nombres:
+          Id:
         </label>
         <input
           type="text"

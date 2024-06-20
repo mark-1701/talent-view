@@ -3,14 +3,14 @@ import DeleteIcon from '../../../../../components/common/DeleteIcon';
 import ViewIcon from '../../../../../components/common/ViewIcon';
 import { deleteData } from '../../../../../data/api';
 
-const EmployeeTable = ({
+const PositionTable = ({
   data,
   setSelectedElement,
   toggleViewModalState,
   toggleUpdateModalState
 }) => {
-  const deleteemployee = async id => {
-    const response = await deleteData('employee', id);
+  const deletePosition = async id => {
+    const response = await deleteData('position', id);
     window.location.reload();
   };
   return (
@@ -18,28 +18,26 @@ const EmployeeTable = ({
       <thead>
         <tr>
           <th>id</th>
-          <th>Nombres</th>
-          <th>Apellidos</th>
-          <th>Email</th>
-          <th>Puesto</th>
+          <th>Id de Departamento</th>
+          <th>Departamento</th>
+          <th>Nombre</th>
+          <th>Descripción</th>
           <th>Actions</th>
         </tr>
       </thead>
       <tbody>
-        {data.map(employee => (
-          <tr key={employee?.id}>
-            <td>{employee?.id}</td>
-            <td>{employee?.first_name}</td>
-            <td>{employee?.last_name}</td>
-            <td>{employee?.email}</td>
-            <td>{employee?.position?.name}</td>
-            {/* 
-        <td>{employee?.state}</td> */}
+        {data.map(position => (
+          <tr key={position?.id}>
+            <td>{position?.id}</td>
+            <td>{position?.department_id}</td>
+            <td>{position?.name}</td>
+            <td>{position?.department?.name}</td>
+            <td>{position?.description}</td>
             <td className="flex justify-center items-center gap-2">
               <button
                 className=""
                 onClick={e => {
-                  setSelectedElement(employee);
+                  setSelectedElement(position);
                   toggleViewModalState();
                 }}
               >
@@ -48,7 +46,7 @@ const EmployeeTable = ({
               <button
                 className=""
                 onClick={e => {
-                  setSelectedElement(employee);
+                  setSelectedElement(position);
                   toggleUpdateModalState();
                 }}
               >
@@ -59,7 +57,7 @@ const EmployeeTable = ({
                 onSubmit={e => {
                   e.preventDefault();
                   if (confirm('¿Estas seguro de eliminar este registro?')) {
-                    deleteemployee(employee.id);
+                    deletePosition(position.id);
                   }
                 }}
               >
@@ -75,4 +73,4 @@ const EmployeeTable = ({
   );
 };
 
-export default EmployeeTable;
+export default PositionTable;

@@ -5,7 +5,7 @@ const ViewEmployeeForm = ({ selectedElement, toggleModalState }) => {
       method="POST"
       onSubmit={e => {
         e.preventDefault();
-        createEmployee(e);
+        toggleModalState();
       }}
     >
       <div>

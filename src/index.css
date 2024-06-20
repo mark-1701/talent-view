@@ -34,6 +34,10 @@
   @apply w-full h-8 p-2 rounded border-2 border-gray-200 hover:border-blue-500 focus:border-blue-600 !outline-none;
 }
 
+.textarea {
+  @apply w-full h-20 p-2 rounded border-2 border-gray-200 hover:border-blue-500 focus:border-blue-600 !outline-none;
+}
+
 .disabled {
   @apply bg-gray-100;
 }

@@ -3,14 +3,14 @@ import DeleteIcon from '../../../../../components/common/DeleteIcon';
 import ViewIcon from '../../../../../components/common/ViewIcon';
 import { deleteData } from '../../../../../data/api';
 
-const EmployeeTable = ({
+const BenefitTable = ({
   data,
   setSelectedElement,
   toggleViewModalState,
   toggleUpdateModalState
 }) => {
-  const deleteemployee = async id => {
-    const response = await deleteData('employee', id);
+  const deleteBenefit = async id => {
+    const response = await deleteData('benefit', id);
     window.location.reload();
   };
   return (
@@ -18,28 +18,26 @@ const EmployeeTable = ({
       <thead>
         <tr>
           <th>id</th>
-          <th>Nombres</th>
-          <th>Apellidos</th>
-          <th>Email</th>
-          <th>Puesto</th>
+          <th>Empleado</th>
+          <th>Tipo</th>
+          <th>Descripción</th>
+          <th>Fecha de Consesión</th>
           <th>Actions</th>
         </tr>
       </thead>
       <tbody>
-        {data.map(employee => (
-          <tr key={employee?.id}>
-            <td>{employee?.id}</td>
-            <td>{employee?.first_name}</td>
-            <td>{employee?.last_name}</td>
-            <td>{employee?.email}</td>
-            <td>{employee?.position?.name}</td>
-            {/* 
-        <td>{employee?.state}</td> */}
+        {data.map(benefit => (
+          <tr key={benefit?.id}>
+            <td>{benefit?.id}</td>
+            <td>{benefit?.employee?.first_name}</td>
+            <td>{benefit?.benefit_type}</td>
+            <td>{benefit?.description}</td>
+            <td>{benefit?.grant_date}</td>
             <td className="flex justify-center items-center gap-2">
               <button
                 className=""
                 onClick={e => {
-                  setSelectedElement(employee);
+                  setSelectedElement(benefit);
                   toggleViewModalState();
                 }}
               >
@@ -48,7 +46,7 @@ const EmployeeTable = ({
               <button
                 className=""
                 onClick={e => {
-                  setSelectedElement(employee);
+                  setSelectedElement(benefit);
                   toggleUpdateModalState();
                 }}
               >
@@ -59,7 +57,7 @@ const EmployeeTable = ({
                 onSubmit={e => {
                   e.preventDefault();
                   if (confirm('¿Estas seguro de eliminar este registro?')) {
-                    deleteemployee(employee.id);
+                    deleteBenefit(benefit.id);
                   }
                 }}
               >
@@ -75,4 +73,4 @@ const EmployeeTable = ({
   );
 };
 
-export default EmployeeTable;
+export default BenefitTable;
