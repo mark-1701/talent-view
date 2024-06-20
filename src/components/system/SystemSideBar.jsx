@@ -4,7 +4,7 @@ function SystemSideBar({ menuBtn, sideBarLinks }) {
   return (
     // block para todas las pantallas y fixed cuando son pantallas pequeñas
     <aside
-      className={`flex-none block h-full ${responsiveWidthSmall} transition-all overflow-hidden bg-indigo-600 max-sm:fixed ${responsiveWidthLarge}`}
+      className={`flex-none block h-full ${responsiveWidthSmall} transition-all overflow-hidden bg-purple-600 max-sm:fixed ${responsiveWidthLarge}`}
     >
       <ul className="flex flex-col">{sideBarLinks}</ul>
     </aside>
