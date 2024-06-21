@@ -7,9 +7,9 @@ const SystemLogout = ({ link, icon, linkTitle, selectedLink }) => {
     <li>
       <a
         title={linkTitle}
-        className={`flex items-center gap-3 text-white hover:bg-indigo-500 ${
+        className={`flex items-center gap-3 text-white hover:bg-purple-500 ${
           selectedLink.toLowerCase() == linkTitle.toLowerCase() &&
-          'bg-indigo-500'
+          'bg-purple-500'
         } cursor-pointer`}
         onClick={e => {
           localStorage.removeItem('session');

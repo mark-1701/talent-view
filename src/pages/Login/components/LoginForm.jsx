@@ -11,12 +11,15 @@ const LoginForm = ({ setSessionUser }) => {
       localStorage.setItem('session', JSON.stringify(response.data));
       switch (response.data.position.name) {
         case 'Administration':
+          navigate('/administration');
+          break;
         case 'HR Specialist':
           navigate('/human-resources');
           break;
       }
     } else {
       localStorage.removeItem('session');
+      alert('Credenciales incorrectas');
     }
   };
   return (

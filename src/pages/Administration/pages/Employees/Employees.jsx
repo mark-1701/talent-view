@@ -2,15 +2,16 @@ import { useState, useEffect } from 'react';
 import Modal from '../../../../components/common/Modal';
 import { getData } from '../../../../data/api';
 import pLimit from 'p-limit';
-import DepartmentTable from './components/DepartmentTable';
-import CreateDepartmentForm from './components/CreateDepartmentForm';
-import ViewDepartmentForm from './components/ViewDepartmentForm';
-import UpdateDepartmentForm from './components/UpdateDepartmentForm';
+import EmployeeTable from './components/EmployeeTable';
+import CreateEmployeeForm from './components/CreateEmployeeForm';
+import ViewEmployeeForm from './components/ViewEmployeeForm';
+import UpdateEmployeeForm from './components/UpdateEmployeeForm';
 
 const limit = pLimit(1);
 
-const Departments = () => {
+const Employees = () => {
   const [data, setData] = useState([]);
+  const [positions, setPositions] = useState([]);
   const [viewModalState, setViewModalState] = useState(false);
   const [createModalState, setCreateModalState] = useState(false);
   const [updateModalState, setUpdateModalState] = useState(false);
@@ -19,10 +20,11 @@ const Departments = () => {
   // funciones y useEffects
   useEffect(() => {
     const fetchData = async () => {
-      const endpoints = ['department'];
+      const endpoints = ['employee', 'position'];
       const tasks = endpoints.map(endpoint => limit(() => getData(endpoint)));
-      const [departmentData] = await Promise.all(tasks);
-      setData(departmentData);
+      const [employeeData, positionData] = await Promise.all(tasks);
+      setData(employeeData);
+      setPositions(positionData);
     };
     fetchData();
   }, []);
@@ -35,16 +37,16 @@ const Departments = () => {
     viewModalState ? setViewModalState(false) : setViewModalState(true);
   return (
     <div>
-      <h1 className="title">Tabla Departamentos</h1>
+      <h1 className="title">Tabla Empleados</h1>
       <button
         className="btn mb-4"
         onClick={() => {
           toggleCreateModalState();
         }}
       >
-        Crear Departamento
+        Crear Empleado
       </button>
-      <DepartmentTable
+      <EmployeeTable
         data={data}
         setSelectedElement={setSelectedElement}
         toggleViewModalState={toggleViewModalState}
@@ -55,15 +57,16 @@ const Departments = () => {
       <Modal
         modalState={createModalState}
         toggleModalState={toggleCreateModalState}
-        title={'Crear Departamento'}
-        form={<CreateDepartmentForm />}
+        title={'Crear Empleado'}
+        form={<CreateEmployeeForm positions={positions} />}
       />
       <Modal
         modalState={updateModalState}
         toggleModalState={toggleUpdateModalState}
-        title={'Actualizar Departamento'}
+        title={'Actualizar Empleado'}
         form={
-          <UpdateDepartmentForm
+          <UpdateEmployeeForm
+            positions={positions}
             selectedElement={selectedElement}
           />
         }
@@ -71,9 +74,9 @@ const Departments = () => {
       <Modal
         modalState={viewModalState}
         toggleModalState={toggleViewModalState}
-        title={'Ver Departamento'}
+        title={'Ver Empleado'}
         form={
-          <ViewDepartmentForm
+          <ViewEmployeeForm
             selectedElement={selectedElement}
             toggleModalState={toggleViewModalState}
           />
@@ -83,4 +86,4 @@ const Departments = () => {
   );
 };
 
-export default Departments;
+export default Employees;

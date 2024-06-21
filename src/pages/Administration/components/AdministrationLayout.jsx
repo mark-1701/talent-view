@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import SystemNavBar from '../../../components/system/SystemNavBar';
 import SystemSideBar from '../../../components/system/SystemSideBar';
 
-const HumanResourcesLayout = ({ sideBarLinks, module }) => {
+const AdministrationLayout = ({ sideBarLinks, module }) => {
   const initialMenuBtnState = localStorage.getItem('menuBtn') === 'true';
   const [menuBtn, setMenuBtn] = useState(initialMenuBtnState);
   useEffect(() => {
@@ -11,7 +11,7 @@ const HumanResourcesLayout = ({ sideBarLinks, module }) => {
   return (
     <>
       <SystemNavBar
-        title={'Sistema de Recursos Humanos 👩‍💼'}
+        title={'Sistema Administración 👷‍♀️'}
         menuBtn={menuBtn}
         setMenuBtn={setMenuBtn}
       />
@@ -21,7 +21,7 @@ const HumanResourcesLayout = ({ sideBarLinks, module }) => {
         <main className="w-full p-8 overflow-auto max-sm:ml-14">{module}</main>
       </div>
     </>
-  )
-}
+  );
+};
 
-export default HumanResourcesLayout
+export default AdministrationLayout;

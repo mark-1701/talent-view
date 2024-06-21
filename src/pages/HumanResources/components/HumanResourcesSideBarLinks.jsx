@@ -9,8 +9,8 @@ const HumanResourcesSideBarLinks = ({ selectedLink }) => {
       <SystemSideBarLink link={'/human-resources/productivities'} icon={'productivity'} linkTitle={'Productividad'} selectedLink={selectedLink} />
       <SystemSideBarLink link={'/human-resources/employment-statuses'} icon={'person_off'} linkTitle={'Estado de Empleado'} selectedLink={selectedLink} />
       <SystemSideBarLink link={'/human-resources/payrolls'} icon={'paid'} linkTitle={'Nomina'} selectedLink={selectedLink} />
-      <SystemSideBarLink link={'/human-resources/positions'} icon={'badge'} linkTitle={'Puestos'} selectedLink={selectedLink} />
-      <SystemSideBarLink link={'/human-resources/departments'} icon={'group_work'} linkTitle={'Departamentos'} selectedLink={selectedLink} />
+      {/* <SystemSideBarLink link={'/human-resources/positions'} icon={'badge'} linkTitle={'Puestos'} selectedLink={selectedLink} />
+      <SystemSideBarLink link={'/human-resources/departments'} icon={'group_work'} linkTitle={'Departamentos'} selectedLink={selectedLink} /> */}
       <SystemLogout icon={'logout'} linkTitle={'Salir'} selectedLink={selectedLink} />
     </>
   );
